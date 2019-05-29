@@ -34,10 +34,10 @@ def first_finder(app_number):
     # this part gets 1st label and latest label from current drug url
     driver.find_element_by_partial_link_text("Approval Date(s) and History, Letters, Labels").click()
     try:
-        driver.find_element_by_link_text("Review").click()
-        link = driver.getCurrentURL()
-        time.sleep(15)
-        return link
+        driver.find_element_by_tag_name("Review (PDF)").click()
+        #link = driver.current_url()
+        #time.sleep(15)
+        #return link
     except NoSuchElementException:
         result = 0
         time.sleep(8)
@@ -59,8 +59,8 @@ def second_finder(app_number):
     # this part gets 1st label and latest label from current drug url
     driver.find_element_by_partial_link_text("Approval Date(s) and History, Letters, Labels").click()
     try:
-        driver.find_element_by_link_text("Label (PDF)").click()
-        latest_link = driver.getCurrentURL()
+        driver.find_element_by_partial_link_text("Label").click()
+        latest_link = driver.current_url()
         time.sleep(15)
         return latest_link
     except NoSuchElementException:
@@ -84,8 +84,8 @@ def third_finder(app_number):
     # this part gets 1st label and latest label from current drug url
     driver.find_element_by_partial_link_text("Approval Date(s) and History, Letters, Labels").click()
     try:
-        driver.find_element_by_link_text("Letter (PDF)").click()
-        latest_other_link = driver.getCurrentURL()
+        driver.find_element_by_partial_link_text("Letter").click()
+        latest_other_link = driver.current_url()
         time.sleep(15)
         return latest_other_link
     except NoSuchElementException:
