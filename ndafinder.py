@@ -110,6 +110,7 @@ with open('application_numbers.csv', 'r') as first_csv:
     f.close()
 
 # end in quit() rightt?
+first_reader.close()
 driver.quit()
 #write_function.close()
 # f.close()
