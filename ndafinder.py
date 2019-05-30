@@ -80,8 +80,8 @@ from itertools import islice
 
 driver = webdriver.Chrome(r"C:\Users\garcia\PycharmProjects\FDAlooker\drivers\chromedriver.exe")
 
-start_index = 100 #beginning index
-stop_index = 149 # ending index
+start_index = 105 #beginning index
+stop_index = 155 # ending index
 
 with open('application_numbers.csv', 'r') as first_csv:
     first_reader = csv.reader(first_csv)
@@ -110,7 +110,6 @@ with open('application_numbers.csv', 'r') as first_csv:
     f.close()
 
 # end in quit() rightt?
-first_reader.close()
 driver.quit()
 #write_function.close()
 # f.close()
