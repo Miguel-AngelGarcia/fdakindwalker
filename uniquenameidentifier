@@ -1,0 +1,50 @@
+from itertools import islice
+import csv
+
+start_index = 0
+stop_index = 3886
+
+with open('unique_list.csv', 'r') as unique_csv:
+    reader_csv = csv.reader(unique_csv)
+
+    file_name = 'results_unique.csv'
+    f = open(file_name, 'w')
+    #headers = "Applicant_Name, DUNS, Global_Parent_DUNS\n"
+    #f.write(headers)
+
+    Applicant_Name, DUNS, Global_Parent_DUNS = [], [], []
+
+    for line in islice(reader_csv, start_index, stop_index):
+        i = 0 # messes up on 1st name when writing to csv
+        name = line[0]
+        duns = line[1]
+        glo_par_duns = line[2]
+
+        if name not in Applicant_Name:
+            Applicant_Name.append(name)
+            #f.write(str(name) + ',')
+
+            # if duns == '':
+            #     f.write('' + ',')
+            #
+            # if glo_par_duns == '':
+            #     f.write('' + ',')
+            #     f.write('\n')
+
+            if duns not in DUNS:
+                DUNS.append(duns)
+                # f.write(str(duns) + ',')
+
+            if glo_par_duns not in Global_Parent_DUNS:
+                Global_Parent_DUNS.append(glo_par_duns)
+                # f.write(str(glo_par_duns) + ',')
+                # f.write('\n')
+
+            f.write(str(name) + ',')
+            f.write(str(duns) + ',')
+            f.write(str(glo_par_duns) + ',')
+            f.write('\n')
+
+        i += 1
+
+    f.close()
